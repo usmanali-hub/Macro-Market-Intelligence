@@ -6,6 +6,19 @@ A recruiter-ready **Data & Financial Analytics** project that turns public U.S. 
 
 > **Recruiter takeaway:** this project demonstrates the full chain from raw economic data to validated signals, analytical context, visual evidence, and a clearly communicated next question.
 
+## Interactive Dashboard
+
+Run the project as an interactive local dashboard:
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+The dashboard lets users select a historical window and explore policy rates, 10Y Treasury yields, CPI, unemployment, GDP, and the latest rate spread. It automatically downloads and prepares the public economic data if the processed dataset is not present.
+
+For a hosted version, deploy `app.py` on any Streamlit-compatible hosting service.
+
 ## The Business Problem
 
 Economic indicators arrive at different frequencies and can tell different parts of the story. This project creates a repeatable framework for combining **interest rates, inflation, unemployment, GDP growth, and Treasury yields** into one analytical view.
@@ -79,7 +92,7 @@ Decision Framework
 
 ## Tech Stack
 
-**Python · pandas · NumPy · SQL · Matplotlib · Git/GitHub · GitHub Actions**
+**Python · pandas · NumPy · SQL · Matplotlib · Git/GitHub · GitHub Actions · Streamlit**
 
 ## Reproduce It
 
@@ -94,6 +107,7 @@ python src/analyze_macro.py
 
 | Folder | Purpose |
 |---|---|
+| `app.py` | Interactive Streamlit dashboard |
 | `reports/` | Executive interpretation |
 | `docs/` | Methodology, data dictionary, decision framework |
 | `sql/` | Reusable analytical queries |
