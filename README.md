@@ -2,11 +2,22 @@
 
 ## Economic signals → structured market context
 
-A reproducible macroeconomic analytics project that transforms public economic indicators into **decision-oriented analytical signals** using Python, SQL, time-series analysis, feature engineering, and visualization.
+A recruiter-ready, reproducible macroeconomic analytics project that transforms public economic indicators into **decision-oriented analytical signals** using Python, SQL, time-series analysis, feature engineering, and visualization.
 
-### Why this project matters
+> **Portfolio focus:** turning raw economic data into evidence, context, and the next analytical question—not simply producing charts.
 
-A recruiter should be able to see the full analyst workflow: raw economic releases are downloaded, validated, aligned, transformed into comparable features, segmented into heuristic regimes, queried with SQL, and converted into an interpretable analytical narrative.
+### Analyst Snapshot
+
+| Capability | Demonstrated here |
+|---|---|
+| Data preparation | Validation, frequency alignment, missing-value handling |
+| Time-series analysis | YoY growth, 3-month momentum, trend comparison |
+| Feature engineering | Yield-curve proxy, z-scores, derived indicators |
+| Statistical reasoning | Correlation analysis and standardized signals |
+| Segmentation | Heuristic macro-regime classification |
+| SQL | Reusable analytical queries |
+| Communication | Executive dashboard and decision framework |
+| Reproducibility | Scripted pipeline + GitHub Actions |
 
 ## Business Questions
 
@@ -16,6 +27,14 @@ A recruiter should be able to see the full analyst workflow: raw economic releas
 - Which indicators are accelerating or decelerating over three months?
 - Which historical relationships deserve further investigation?
 - How can multiple indicators be combined into a consistent macro regime framework?
+
+## Executive Dashboard
+
+See the recruiter-facing interpretation layer: **[Executive Dashboard](reports/executive_dashboard.md)**.
+
+The dashboard is designed around:
+
+**Observation → evidence → relationship → uncertainty → next analytical question**
 
 ## Analytical Workflow
 
@@ -85,3 +104,11 @@ Economic data analysis, time-series alignment, feature engineering, statistical 
 ## Data Integrity
 
 The project uses public economic data for analytical demonstration and research. Derived features are clearly distinguished from official economic releases. The project is not investment advice.
+
+## Portfolio
+
+Part of a three-project Data Analyst portfolio:
+
+- **Macro Market Intelligence** — economic and market context
+- **Trading Risk & Performance Analytics** — financial risk and performance
+- **Customer Support Analytics** — business and operations analytics
