@@ -1,30 +1,52 @@
-# Executive Dashboard
+# Executive Dashboard — Macro Market Intelligence
 
-## Analyst view
+> **Economic signals → structured market context**
 
-| Lens | Question | Output |
+This is the recruiter-facing entry point for the analytical output. Charts are generated reproducibly by `src/analyze_macro.py` and are not treated as hand-made evidence.
+
+## Executive View
+
+| Area | Analytical question | Output |
 |---|---|---|
-| Inflation | Is price pressure accelerating? | CPI YoY + 3-month change |
-| Growth | Is economic activity strengthening? | GDP YoY + 3-month change |
-| Labor | Is labor-market pressure changing? | Unemployment trend/z-score |
-| Policy | Is monetary policy becoming tighter/looser? | Fed-funds level + 3-month change |
-| Curve | Is the rate environment changing? | 10Y minus fed-funds proxy |
-| Regime | What combination of conditions is present? | Heuristic regime label |
+| Rates | How have policy and long-term rates moved? | Interest-rate trend |
+| Inflation | Is price pressure accelerating or cooling? | YoY inflation + 3-month change |
+| Growth | Is economic growth strengthening or weakening? | YoY growth + momentum |
+| Labor | Is unemployment improving or deteriorating? | Unemployment trend |
+| Curve | How does the 10Y yield compare with policy rates? | Yield-curve proxy |
+| Regime | What broad conditions appear historically? | Heuristic regime classification |
+| Relationships | Which indicators move together? | Correlation analysis |
 
-## Executive interpretation
+## Generated Visuals
 
-Use the dashboard in this order:
+Running the pipeline creates these charts under `outputs/charts/`:
 
-1. Establish the current direction of each major indicator.
-2. Check whether changes are persistent or isolated.
-3. Compare standardized indicator behavior.
-4. Review the heuristic regime classification.
-5. Drill into the underlying observations before making a conclusion.
+- `interest_rates.png` — policy rate vs 10-year Treasury yield
+- `inflation_unemployment.png` — inflation and unemployment context
+- `correlations.png` — historical indicator relationships
+- `macro_regimes.png` — frequency of heuristic macro regimes
 
-## Portfolio presentation
+## Decision Lens
 
-The strongest interview discussion is not “the chart went up.” It is:
+1. **What changed?** Identify direction and magnitude.
+2. **Is the change broad or isolated?** Compare rates, inflation, growth, labor, and the curve.
+3. **What deserves investigation?** Focus on regime transitions and unusual momentum.
+4. **What should not be assumed?** Historical correlation does not establish causation or predict future outcomes.
 
-**Observation → evidence → relationship → uncertainty → next analytical question.**
+## Methodological Guardrails
 
-No empirical conclusion should be presented without running the reproducible pipeline against the current public dataset.
+- Public economic data only.
+- Derived metrics are separated from official releases.
+- Macro regimes are heuristic and descriptive, not predictive.
+- Frequency alignment and forward-filling are documented in `docs/methodology.md`.
+- This project is analytical demonstration, not investment advice.
+
+## Reproduce
+
+```bash
+pip install -r requirements.txt
+python src/download_data.py
+python src/clean_data.py
+python src/analyze_macro.py
+```
+
+**Interview framing:** `Observation → evidence → relationship → uncertainty → next analytical question.`
