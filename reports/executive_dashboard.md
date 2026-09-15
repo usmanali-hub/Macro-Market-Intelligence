@@ -2,7 +2,7 @@
 
 > **Economic signals → structured market context**
 
-This is the recruiter-facing entry point for the analytical output. Charts are generated reproducibly by `src/analyze_macro.py` and are not treated as hand-made evidence.
+This is the entry point for the analytical output. Charts are generated reproducibly by `src/analyze_macro.py`.
 
 ## Executive View
 
