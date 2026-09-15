@@ -56,30 +56,29 @@ def analyze(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def save_charts(df: pd.DataFrame) -> None:
-    ax = df[["fed_funds", "treasury_10y"]].plot(figsize=(11, 5), title="U.S. Interest Rates Over Time")
-    ax.set_ylabel("Rate (%)")
-    ax.figure.tight_layout()
-    ax.figure.savefig(CHARTS / "interest_rates.png", dpi=150)
-    plt.close(ax.figure)
-
-    ax = df[["cpi_yoy_pct", "unemployment"]].plot(figsize=(11, 5), title="Inflation and Unemployment")
-    ax.set_ylabel("Percent")
-    ax.figure.tight_layout()
-    ax.figure.savefig(CHARTS / "inflation_unemployment.png", dpi=150)
-    plt.close(ax.figure)
+    charts = [
+        (df[["fed_funds", "treasury_10y"]], "U.S. Interest Rates Over Time", "Rate (%)", "interest_rates.svg"),
+        (df[["cpi_yoy_pct", "unemployment"]], "Inflation and Unemployment", "Percent", "inflation_unemployment.svg"),
+    ]
+    for frame, title, ylabel, filename in charts:
+        ax = frame.plot(figsize=(11, 5), title=title)
+        ax.set_ylabel(ylabel)
+        ax.figure.tight_layout()
+        ax.figure.savefig(CHARTS / filename, format="svg", bbox_inches="tight")
+        plt.close(ax.figure)
 
     corr = df[["fed_funds", "cpi_yoy_pct", "unemployment", "gdp_yoy_pct", "treasury_10y"]].corr()
     ax = corr.plot(kind="bar", figsize=(11, 5), title="Macro Indicator Correlations")
     ax.set_ylabel("Correlation")
     ax.figure.tight_layout()
-    ax.figure.savefig(CHARTS / "correlations.png", dpi=150)
+    ax.figure.savefig(CHARTS / "correlations.svg", format="svg", bbox_inches="tight")
     plt.close(ax.figure)
 
     regime_counts = df["macro_regime"].value_counts().sort_values()
     ax = regime_counts.plot(kind="barh", figsize=(10, 5), title="Heuristic Macro Regime Observations")
     ax.set_xlabel("Observations")
     ax.figure.tight_layout()
-    ax.figure.savefig(CHARTS / "macro_regimes.png", dpi=150)
+    ax.figure.savefig(CHARTS / "macro_regimes.svg", format="svg", bbox_inches="tight")
     plt.close(ax.figure)
 
 
