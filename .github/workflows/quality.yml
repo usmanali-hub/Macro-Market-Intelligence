@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: macro-data-quality-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   quality:
     runs-on: ubuntu-latest
@@ -25,14 +29,26 @@ jobs:
       - name: Publish generated macro charts
         if: github.event_name == 'push' && github.actor != 'github-actions[bot]'
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Preserve freshly generated charts while synchronizing the checkout
+          # with the current tip of main. This avoids rebase conflicts when
+          # chart files were changed by an earlier workflow run.
+          mkdir -p /tmp/generated-macro-charts
+          cp outputs/charts/*.svg /tmp/generated-macro-charts/
+
+          git fetch origin main
+          git reset --hard origin/main
+
+          cp /tmp/generated-macro-charts/*.svg outputs/charts/
           git add -f outputs/charts/*.svg
+
           if git diff --cached --quiet; then
             echo "No chart changes to commit."
           else
             git commit -m "Publish generated macro charts"
-            git pull --rebase origin main
             git push origin HEAD:main
           fi
       - name: Upload generated macro charts
