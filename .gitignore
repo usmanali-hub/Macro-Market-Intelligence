@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+.DS_Store
+
+# Generated data and outputs
+data/raw/*
+data/processed/*
+outputs/charts/*
+outputs/reports/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!outputs/charts/.gitkeep
+!outputs/reports/.gitkeep
