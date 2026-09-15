@@ -2,7 +2,7 @@
 
 ## Economic signals → structured market context
 
-A recruiter-ready, reproducible macroeconomic analytics project that transforms public economic indicators into **decision-oriented analytical signals** using Python, SQL, time-series analysis, feature engineering, and visualization.
+A ready, reproducible macroeconomic analytics project that transforms public economic indicators into **decision-oriented analytical signals** using Python, SQL, time-series analysis, feature engineering, and visualization.
 
 > **Portfolio focus:** turning raw economic data into evidence, context, and the next analytical question—not simply producing charts.
 
