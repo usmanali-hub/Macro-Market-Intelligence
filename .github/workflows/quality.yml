@@ -14,3 +14,11 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
       - run: python -m compileall src
+      - run: python src/download_data.py
+      - run: python src/clean_data.py
+      - run: python src/analyze_macro.py
+      - name: Upload generated macro charts
+        uses: actions/upload-artifact@v4
+        with:
+          name: macro-market-charts
+          path: outputs/charts/
