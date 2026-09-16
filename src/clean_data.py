@@ -1,5 +1,6 @@
-"""Clean and align downloaded macroeconomic series."""
+"""Clean and align downloaded macroeconomic and Treasury series."""
 from pathlib import Path
+
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,7 +13,11 @@ FILES = {
     "consumer_price_index": "cpi",
     "unemployment_rate": "unemployment",
     "gross_domestic_product": "gdp",
+    "treasury_3m_yield": "treasury_3m",
+    "treasury_2y_yield": "treasury_2y",
+    "treasury_5y_yield": "treasury_5y",
     "treasury_10y_yield": "treasury_10y",
+    "treasury_30y_yield": "treasury_30y",
 }
 
 
