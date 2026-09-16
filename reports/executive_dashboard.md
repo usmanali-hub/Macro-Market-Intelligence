@@ -20,10 +20,12 @@ This is the entry point for the analytical output. Charts are generated reproduc
 
 Running the pipeline creates these charts under `outputs/charts/`:
 
-- `interest_rates.png` — policy rate vs 10-year Treasury yield
-- `inflation_unemployment.png` — inflation and unemployment context
-- `correlations.png` — historical indicator relationships
-- `macro_regimes.png` — frequency of heuristic macro regimes
+- `interest_rates.svg` — policy rate vs 10-year Treasury yield
+- `inflation_unemployment.svg` — inflation and unemployment context
+- `correlations.svg` — historical indicator relationships
+- `macro_regimes.svg` — frequency of heuristic macro regimes
+
+These SVG files are committed so the analytical output is visible directly on GitHub without opening source code.
 
 ## Decision Lens
 
