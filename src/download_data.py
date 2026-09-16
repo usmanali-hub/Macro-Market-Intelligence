@@ -1,5 +1,6 @@
-"""Download selected U.S. macroeconomic series from FRED public CSV endpoints."""
+"""Download selected U.S. macroeconomic and Treasury series from FRED public CSV endpoints."""
 from pathlib import Path
+
 import pandas as pd
 
 BASE_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv?id={}"
@@ -8,7 +9,11 @@ SERIES = {
     "CPIAUCSL": "consumer_price_index",
     "UNRATE": "unemployment_rate",
     "GDP": "gross_domestic_product",
+    "DGS3MO": "treasury_3m_yield",
+    "DGS2": "treasury_2y_yield",
+    "DGS5": "treasury_5y_yield",
     "DGS10": "treasury_10y_yield",
+    "DGS30": "treasury_30y_yield",
 }
 
 ROOT = Path(__file__).resolve().parents[1]
