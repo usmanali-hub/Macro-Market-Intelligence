@@ -23,6 +23,8 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
       - run: python -m compileall src
+      - run: pip install pytest
+      - run: python -m pytest -q
       - run: python src/download_data.py
       - run: python src/clean_data.py
       - run: python src/analyze_macro.py
