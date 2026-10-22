@@ -40,7 +40,8 @@ def test_analyze_creates_full_curve_features():
 
 
 def test_lagged_correlation_table_has_expected_horizons():
-    result = lagged_correlation_table(sample_frame(), max_lag=6)
+    # lagged_correlation_table expects the output of analyze(), which adds cpi_yoy_pct
+    result = lagged_correlation_table(analyze(sample_frame()), max_lag=6)
     assert len(result) == 3 * 7
     assert set(result["target"]) == {"fed_funds", "treasury_10y", "curve_10y_2y"}
     assert result["target_lead_months"].min() == 0
@@ -49,7 +50,7 @@ def test_lagged_correlation_table_has_expected_horizons():
 
 
 def test_lagged_correlation_uses_future_target_values():
-    frame = sample_frame()
+    frame = analyze(sample_frame())
     result = lagged_correlation_table(frame, targets=("fed_funds",), max_lag=1)
     zero_lag = result.loc[result["target_lead_months"] == 0, "correlation"].iloc[0]
     one_lag = result.loc[result["target_lead_months"] == 1, "correlation"].iloc[0]
