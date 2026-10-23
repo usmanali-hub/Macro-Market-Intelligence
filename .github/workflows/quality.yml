@@ -28,6 +28,9 @@ jobs:
       - run: python src/download_data.py
       - run: python src/clean_data.py
       - run: python src/analyze_macro.py
+      - name: Smoke-test the dashboard
+        run: |
+          python -c "from streamlit.testing.v1 import AppTest; at = AppTest.from_file('app.py', default_timeout=120).run(); assert not at.exception, at.exception"
       - name: Upload generated macro charts
         uses: actions/upload-artifact@v6
         with:
